@@ -2,6 +2,7 @@ package ru.job4j.articles.store;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.job4j.articles.model.Article;
 import ru.job4j.articles.model.Word;
 
 import java.nio.file.Files;
@@ -66,7 +67,7 @@ public class WordStore implements Store<Word>, AutoCloseable {
     }
 
     @Override
-    public Word save(Word model) {
+    public Word save(Article model) {
         LOGGER.info("Добавление слова в базу данных");
         var sql = "insert into dictionary(word) values(?);";
         try (var statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
