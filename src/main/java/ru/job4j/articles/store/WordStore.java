@@ -67,7 +67,7 @@ public class WordStore implements Store<Word>, AutoCloseable {
     }
 
     @Override
-    public Word save(Article model) {
+    public Word save(Word model) {
         LOGGER.info("Добавление слова в базу данных");
         var sql = "insert into dictionary(word) values(?);";
         try (var statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
